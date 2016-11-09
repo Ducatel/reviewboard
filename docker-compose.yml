@@ -1,0 +1,30 @@
+
+# With a postgres database
+# database:
+#     image: postgres
+#     environment:
+#       - POSTGRES_USER=reviewboard
+#       - POSTGRES_PASSWORD=reviewboard
+#    volumes:
+#         - /home/reviewboard/database:/var/lib/postgresql/data
+
+database:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=reviewboard
+      - MYSQL_USER=reviewboard
+      - MYSQL_PASSWORD=reviewboard
+      - MYSQL_DATABASE=reviewboard
+    volumes:
+        - /home/reviewboard/database:/var/lib/mysql
+
+cache:
+    image: memcached
+
+reviewboard:
+    image: ducatel/reviewboard
+    links:
+        - "cache:memcached"
+        - "database:rb_db"
+    ports:
+        - "8000:8000"
