@@ -1,14 +1,12 @@
 FROM ubuntu:16.04
 
-RUN apt-get update
-RUN apt-get install -y python-pip python-dev python-svn python-mysqldb libssl-dev libffi-dev uwsgi libpq-dev wget uwsgi-plugin-python
-RUN pip install -U pip setuptools cryptography python-memcached psycopg2
-
-RUN pip install -U ReviewBoard RBTools && \
-    apt-get clean
-
-RUN wget https://github.com/jwilder/dockerize/releases/download/v0.2.0/dockerize-linux-amd64-v0.2.0.tar.gz \
-      && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-v0.2.0.tar.gz
+RUN apt-get update && \
+    apt-get install -y python-pip python-dev python-svn python-mysqldb libssl-dev libffi-dev uwsgi libpq-dev wget uwsgi-plugin-python && \
+    pip install -U pip setuptools cryptography python-memcached psycopg2 &&\
+    pip install -U ReviewBoard RBTools && \
+    apt-get clean && \
+    wget https://github.com/jwilder/dockerize/releases/download/v0.2.0/dockerize-linux-amd64-v0.2.0.tar.gz && \
+    tar -C /usr/local/bin -xzvf dockerize-linux-amd64-v0.2.0.tar.gz
 
 COPY uwsgi.ini /etc/reviewboard/uwsgi.ini
 COPY run.sh /var/www/run.sh
