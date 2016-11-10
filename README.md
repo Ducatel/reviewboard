@@ -1,6 +1,6 @@
 # Reviewboard
 
-Image which include [reviewboard](https://www.reviewboard.org).
+Image which include [reviewboard](https://www.reviewboard.org), a peer review tool.
 
 This images work with:
 * `mysql` or `postgresql` database
@@ -29,7 +29,7 @@ docker run -d --name reviewboard -p "8000:8000" --link "cache:memcached" --link 
 
 The web interface is available on port `8000`
 
-You should use `docker-compose` to do that. An example of `docker-compose.yml` file is present in this repo.
+You should use `docker-compose` to do that. An example of [docker-compose.yml](https://github.com/Ducatel/reviewboard/blob/master/docker-compose.yml) file is present in this repo.
 
 ## Configuration variables
 
@@ -65,6 +65,8 @@ You can configure this images with some environment variables:
 
 ## Exposed volume
 
-This container expose volume `/media`. You can mount it to make data persistance in reviewboard
+This container expose volume:
+* `/media` where the uploaded files are stored
+* `/var/www/reviewboard` where reviewboard conf are stored
 
 
