@@ -6,11 +6,12 @@ RUN apt-get update && \
     pip install -U ReviewBoard RBTools && \
     apt-get clean && \
     wget https://github.com/jwilder/dockerize/releases/download/v0.2.0/dockerize-linux-amd64-v0.2.0.tar.gz && \
-    tar -C /usr/local/bin -xzvf dockerize-linux-amd64-v0.2.0.tar.gz
+    tar -C /usr/local/bin -xzvf dockerize-linux-amd64-v0.2.0.tar.gz && \
+    rm dockerize-linux-amd64-v0.2.0.tar.gz
 
 COPY uwsgi.ini /etc/reviewboard/uwsgi.ini
-COPY run.sh /var/www/run.sh
-RUN chmod +x /var/www/run.sh
+COPY run.sh /etc/reviewboard/run.sh
+RUN chmod +x /etc/reviewboard/run.sh
 
 ENV DB_TYPE mysql 
 ENV DB_PORT 3306
@@ -22,8 +23,8 @@ ENV RB_PASSWORD admin
 ENV RB_ADMIN_EMAIL admin@example.com
 ENV UWSGI_PROCESSES 10
 
-VOLUME "/media/"
-VOLUME "/var/www/reviewboard"
+VOLUME "/media"
+VOLUME "/var/www"
 EXPOSE 8000
 
-CMD ["/var/www/run.sh"]
+CMD ["/etc/reviewboard/run.sh"]

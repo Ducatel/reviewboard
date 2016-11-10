@@ -67,6 +67,6 @@ You can configure this images with some environment variables:
 
 This container expose volume:
 * `/media` where the uploaded files are stored
-* `/var/www/reviewboard` where reviewboard conf are stored
+* `/var/www` where reviewboard conf are stored
 
 
