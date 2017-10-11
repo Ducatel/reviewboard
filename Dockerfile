@@ -2,6 +2,7 @@ FROM ubuntu:16.04
 
 RUN apt-get update && \
     apt-get install -y python-pip python-dev python-svn python-mysqldb libssl-dev libffi-dev uwsgi libpq-dev wget uwsgi-plugin-python && \
+    pip install --upgrade pip && \
     pip install -U pip setuptools cryptography python-memcached psycopg2 &&\
     pip install -U ReviewBoard RBTools && \
     apt-get clean && \
