@@ -13,7 +13,7 @@ rb-site install --noinput \
        --cache-type=memcached --cache-info="memcached" \
        --web-server-type=lighttpd --web-server-port=8000 \
        --admin-user="${RB_ADMIN}" --admin-password=${RB_PASSWORD} --admin-email=${RB_ADMIN_EMAIL} \
-       /var/www/reviewboard/
+       /var/www/reviewboard
 
 
 

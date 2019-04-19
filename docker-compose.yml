@@ -29,5 +29,4 @@ reviewboard:
     ports:
         - "8000:8000"
     volumes:
-        - /home/reviewboard/site:/var/www/reviewboard
         - /home/reviewboard/media:/media
