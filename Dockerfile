@@ -12,7 +12,7 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/v${dockerize_ver
 RUN pip install --upgrade pip
 RUN pip install -U setuptools cryptography python-memcached psycopg2
 
-ARG reviewboard_version=3.0.14 
+ARG reviewboard_version=3.0.18
 ARG rbtools_version=1.0.1
 RUN pip install -U ReviewBoard==$reviewboard_version RBTools==$rbtools_version
 
